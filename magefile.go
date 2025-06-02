@@ -151,6 +151,11 @@ func Manifest() error {
 				Description: "OBS Overlay",
 			},
 			{
+				Path:        "/m/trackstar-overlay/custom-web/",
+				Type:        modules.ManifestWebPathType_MANIFEST_WEB_PATH_TYPE_OBS_OVERLAY,
+				Description: "Custom OBS Overlay",
+			},
+			{
 				Path:        "/m/trackstar-overlay/embed_ctrl.js",
 				Type:        modules.ManifestWebPathType_MANIFEST_WEB_PATH_TYPE_EMBED_CONTROL,
 				Description: "Overlay Customization",
@@ -161,6 +166,7 @@ func Manifest() error {
 				Description: "Overlay Customization",
 			},
 		},
+		CustomWebDir: true,
 	}
 	manifest, err := protojson.Marshal(manifestPB)
 	if err != nil {
