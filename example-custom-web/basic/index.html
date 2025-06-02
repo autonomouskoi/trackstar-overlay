@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/titillium.css" rel="stylesheet">
+    <title>AutonomousKoi</title>
+</head>
+
+<body>
+    <div id="mainContainer"></div>
+</body>
+<script type="importmap">
+        {
+            "imports": {
+                "@bufbuild/protobuf": "/protobuf/index.js"
+            }
+        }
+    </script>
+<script type="module">
+    import { start } from './custom-overlay.js';
+    import { bus, enumName } from "/bus.js";
+    import * as tspb from "/m/trackstar/pb/trackstar_pb.js";
+    const TOPIC_EVENT = enumName(tspb.BusTopic, tspb.BusTopic.TRACKSTAR_EVENT);
+
+    let mainContainer = document.querySelector('#mainContainer');
+    let trackUpdateCB = start(mainContainer);
+
+    bus.subscribe(TOPIC_EVENT, (msg) => {
+        if (msg.type === tspb.MessageTypeEvent.TRACKSTAR_EVENT_TRACK_UPDATE) {
+            trackUpdateCB(tspb.TrackUpdate.fromBinary(msg.message));
+        }
+    });
+</script>
+
+</html>
