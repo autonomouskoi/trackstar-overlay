@@ -141,7 +141,7 @@ func Manifest() error {
 		Version:     version,
 		WebPaths: []*modules.ManifestWebPath{
 			{
-				Path:        "https://autonomouskoi.org/module-trackstaroverlay.html",
+				Path:        "https://autonomouskoi.org/plugin-trackstar-overlay.html",
 				Type:        modules.ManifestWebPathType_MANIFEST_WEB_PATH_TYPE_HELP,
 				Description: "Help!",
 			},
