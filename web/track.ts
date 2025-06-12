@@ -151,7 +151,7 @@ class Renderer extends HTMLElement {
         cfg.subscribe((newCfg) => this._onConfigUpdated(newCfg));
 
         bus.subscribe(TOPIC_EVENT, (msg) => {
-            if (msg.type !== tspb.MessageTypeEvent.TRACKSTAR_EVENT_TRACK_UPDATE) {
+            if (msg.type !== tspb.MessageTypeEvent.TRACK_UPDATE) {
                 return;
             }
             this._onTrackUpdate(tspb.TrackUpdate.fromBinary(msg.message));
